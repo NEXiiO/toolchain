@@ -1,0 +1,15 @@
+{
+  "name": "toolchain-riscv32-elf",
+  "version": "1.130200.0",
+  "description": "RISC-V 32-bit GNU Toolchain 13.2.0 (riscv32-unknown-elf-gcc)",
+  "keywords": ["toolchain", "riscv", "gcc", "embedded"],
+  "homepage": "https://github.com/riscv-collab/riscv-gnu-toolchain",
+  "license": "GPL-3.0",
+  "system": [
+    "windows_x86_64",
+    "linux_x86_64",
+    "linux_aarch64",
+    "darwin_x86_64",
+    "darwin_arm64"
+  ]
+}

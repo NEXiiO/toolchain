@@ -1,0 +1,15 @@
+{
+  "name": "toolchain-arm-none-eabi",
+  "version": "1.90301.0",
+  "description": "GNU ARM Embedded Toolchain 13.2.1 (arm-none-eabi-gcc)",
+  "keywords": ["toolchain", "arm", "gcc", "embedded", "cortex-m"],
+  "homepage": "https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads",
+  "license": "GPL-3.0",
+  "system": [
+    "windows_x86_64",
+    "linux_x86_64",
+    "linux_aarch64",
+    "darwin_x86_64",
+    "darwin_arm64"
+  ]
+}
