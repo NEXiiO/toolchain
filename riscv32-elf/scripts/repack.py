@@ -65,6 +65,14 @@ PACKAGE_JSON_TEMPLATE = {
     "system":      [],
 }
 
+PIO_SYSTEM_TAG = {
+    "windows_x86_64": "windows_amd64",
+    "linux_x86_64":   "linux_x86_64",
+    "linux_aarch64":  "linux_aarch64",
+    "darwin_x86_64":  "darwin_x86_64",
+    "darwin_arm64":   "darwin_arm64",
+}
+
 # =============================================================================
 # Functions (identical to arm-none-eabi/scripts/repack.py)
 # =============================================================================
@@ -96,7 +104,7 @@ def _find_inner(extract_dir):
 
 def _write_package_json(inner_dir, os_tag):
     pkg = dict(PACKAGE_JSON_TEMPLATE)
-    pkg["system"] = [os_tag]
+    pkg["system"] = [PIO_SYSTEM_TAG.get(os_tag, os_tag)]
     with open(os.path.join(inner_dir, "package.json"), "w") as f:
         json.dump(pkg, f, indent=2)
         f.write("\n")

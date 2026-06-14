@@ -64,6 +64,17 @@ PACKAGE_JSON_TEMPLATE = {
     "system":      [],
 }
 
+# Map our filename os_tag → PlatformIO's get_systype() output.
+# On Windows x64, platform.machine() returns "AMD64" so PIO uses "windows_amd64",
+# not "windows_x86_64". The tar filename keeps our tag; package.json uses PIO's tag.
+PIO_SYSTEM_TAG = {
+    "windows_x86_64": "windows_amd64",
+    "linux_x86_64":   "linux_x86_64",
+    "linux_aarch64":  "linux_aarch64",
+    "darwin_x86_64":  "darwin_x86_64",
+    "darwin_arm64":   "darwin_arm64",
+}
+
 # =============================================================================
 # Functions
 # =============================================================================
@@ -100,7 +111,7 @@ def _find_inner(extract_dir):
 
 def _write_package_json(inner_dir, os_tag):
     pkg = dict(PACKAGE_JSON_TEMPLATE)
-    pkg["system"] = [os_tag]
+    pkg["system"] = [PIO_SYSTEM_TAG.get(os_tag, os_tag)]
     path = os.path.join(inner_dir, "package.json")
     with open(path, "w") as f:
         json.dump(pkg, f, indent=2)
